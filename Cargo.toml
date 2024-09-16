@@ -7,6 +7,8 @@ license = "MIT OR Apache-2.0"
 description = "VF2 subgraph isomorphism algorithm in Rust."
 repository = "https://github.com/OwenTrokeBillard/vf2"
 readme = "README.md"
+keywords = ["vf2", "graph", "isomorphism"]
+categories = ["mathematics", "science", "algorithms"]
 
 [features]
 default = ["petgraph"]
