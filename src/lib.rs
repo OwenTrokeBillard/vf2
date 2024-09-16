@@ -10,7 +10,7 @@
 //! # Instructions
 //!
 //! Create your query and data graphs with [petgraph](https://github.com/petgraph/petgraph)
-//! or any library that implements the [Graph] trait. Then, call one of the following
+//! or any library that implements the [`Graph`] trait. Then, call one of the following
 //! functions based on the problem type:
 //! - Graph isomorphisms: [`isomorphisms`].
 //! - Subgraph isomorphisms: [`subgraph_isomorphisms`].
