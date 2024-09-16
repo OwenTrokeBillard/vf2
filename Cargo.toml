@@ -1,0 +1,11 @@
+[package]
+name = "vf2"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["petgraph"]
+petgraph = ["dep:petgraph"]
+
+[dependencies]
+petgraph = { version = "0.6", optional = true, default-features = false }
