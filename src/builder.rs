@@ -1,72 +1,72 @@
 use crate::{Graph, Isomorphism, IsomorphismIter};
 use std::fmt::Debug;
 
-/// Creates a new [`Vf2ppBuilder`] to find
+/// Creates a new [`Vf2Builder`] to find
 /// isomorphisms from `query` to `data`.
 ///
 /// Node and edge equality are not checked by default.
 /// Use [`node_eq`], [`edge_eq`], and [`default_eq`]
 /// on the builder to set equality functions.
 ///
-/// [`node_eq`]: Vf2ppBuilder::node_eq
-/// [`edge_eq`]: Vf2ppBuilder::edge_eq
-/// [`default_eq`]: Vf2ppBuilder::default_eq
+/// [`node_eq`]: Vf2Builder::node_eq
+/// [`edge_eq`]: Vf2Builder::edge_eq
+/// [`default_eq`]: Vf2Builder::default_eq
 pub fn isomorphisms<'a, Query, Data>(
     query: &'a Query,
     data: &'a Data,
-) -> DefaultVf2ppBuilder<'a, Query, Data>
+) -> DefaultVf2Builder<'a, Query, Data>
 where
     Query: Graph,
     Data: Graph,
 {
-    DefaultVf2ppBuilder::new(Problem::Isomorphism, query, data)
+    DefaultVf2Builder::new(Problem::Isomorphism, query, data)
 }
 
-/// Creates a new [`Vf2ppBuilder`] to find
+/// Creates a new [`Vf2Builder`] to find
 /// subgraph isomorphisms from `query` to `data`.
 ///
 /// Node and edge equality are not checked by default.
 /// Use [`node_eq`], [`edge_eq`], and [`default_eq`]
 /// on the builder to set equality functions.
 ///
-/// [`node_eq`]: Vf2ppBuilder::node_eq
-/// [`edge_eq`]: Vf2ppBuilder::edge_eq
-/// [`default_eq`]: Vf2ppBuilder::default_eq
+/// [`node_eq`]: Vf2Builder::node_eq
+/// [`edge_eq`]: Vf2Builder::edge_eq
+/// [`default_eq`]: Vf2Builder::default_eq
 pub fn subgraph_isomorphisms<'a, Query, Data>(
     query: &'a Query,
     data: &'a Data,
-) -> DefaultVf2ppBuilder<'a, Query, Data>
+) -> DefaultVf2Builder<'a, Query, Data>
 where
     Query: Graph,
     Data: Graph,
 {
-    DefaultVf2ppBuilder::new(Problem::SubgraphIsomorphism, query, data)
+    DefaultVf2Builder::new(Problem::SubgraphIsomorphism, query, data)
 }
 
-/// Creates a new [`Vf2ppBuilder`] to find
+/// Creates a new [`Vf2Builder`] to find
 /// induced subgraph isomorphisms from `query` to `data`.
 ///
 /// Node and edge equality are not checked by default.
 /// Use [`node_eq`], [`edge_eq`], and [`default_eq`]
 /// on the builder to set equality functions.
 ///
-/// [`node_eq`]: Vf2ppBuilder::node_eq
-/// [`edge_eq`]: Vf2ppBuilder::edge_eq
-/// [`default_eq`]: Vf2ppBuilder::default_eq
+/// [`node_eq`]: Vf2Builder::node_eq
+/// [`edge_eq`]: Vf2Builder::edge_eq
+/// [`default_eq`]: Vf2Builder::default_eq
 pub fn induced_subgraph_isomorphisms<'a, Query, Data>(
     query: &'a Query,
     data: &'a Data,
-) -> DefaultVf2ppBuilder<'a, Query, Data>
+) -> DefaultVf2Builder<'a, Query, Data>
 where
     Query: Graph,
     Data: Graph,
 {
-    DefaultVf2ppBuilder::new(Problem::InducedSubgraphIsomorphism, query, data)
+    DefaultVf2Builder::new(Problem::InducedSubgraphIsomorphism, query, data)
 }
 
-/// A VF2++ builder.
+/// A VF2 builder.
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub struct Vf2ppBuilder<'a, Query, Data, NodeEq, EdgeEq> {
+pub struct Vf2Builder<'a, Query, Data, NodeEq, EdgeEq> {
     /// Problem type.
     problem: Problem,
     /// Query graph.
@@ -79,11 +79,11 @@ pub struct Vf2ppBuilder<'a, Query, Data, NodeEq, EdgeEq> {
     edge_eq: Option<EdgeEq>,
 }
 
-/// Default VF2++ builder type.
+/// Default VF2 builder type.
 ///
-/// This is [`Vf2ppBuilder`] with function pointers as
+/// This is [`Vf2Builder`] with function pointers as
 /// the node and edge equality function types.
-pub type DefaultVf2ppBuilder<'a, Query, Data> = Vf2ppBuilder<
+pub type DefaultVf2Builder<'a, Query, Data> = Vf2Builder<
     'a,
     Query,
     Data,
@@ -91,12 +91,12 @@ pub type DefaultVf2ppBuilder<'a, Query, Data> = Vf2ppBuilder<
     fn(&<Query as Graph>::EdgeLabel, &<Data as Graph>::EdgeLabel) -> bool,
 >;
 
-impl<'a, Query, Data> DefaultVf2ppBuilder<'a, Query, Data>
+impl<'a, Query, Data> DefaultVf2Builder<'a, Query, Data>
 where
     Query: Graph,
     Data: Graph,
 {
-    /// Creates a new [`Vf2ppBuilder`] that does not check
+    /// Creates a new [`Vf2Builder`] that does not check
     /// node and edge equality.
     fn new(problem: Problem, query: &'a Query, data: &'a Data) -> Self {
         Self {
@@ -109,21 +109,21 @@ where
     }
 }
 
-impl<'a, Query, Data, NodeEq, EdgeEq> Vf2ppBuilder<'a, Query, Data, NodeEq, EdgeEq>
+impl<'a, Query, Data, NodeEq, EdgeEq> Vf2Builder<'a, Query, Data, NodeEq, EdgeEq>
 where
     Query: Graph,
     Data: Graph,
     NodeEq: Fn(&Query::NodeLabel, &Data::NodeLabel) -> bool,
     EdgeEq: Fn(&Query::EdgeLabel, &Data::EdgeLabel) -> bool,
 {
-    /// Configures VF2++ to use the [`PartialEq`] implementations
+    /// Configures VF2 to use the [`PartialEq`] implementations
     /// for node and edge equalities.
-    pub fn default_eq(self) -> DefaultVf2ppBuilder<'a, Query, Data>
+    pub fn default_eq(self) -> DefaultVf2Builder<'a, Query, Data>
     where
         Query::NodeLabel: PartialEq<Data::NodeLabel>,
         Query::EdgeLabel: PartialEq<Data::EdgeLabel>,
     {
-        Vf2ppBuilder {
+        Vf2Builder {
             problem: self.problem,
             query: self.query,
             data: self.data,
@@ -132,15 +132,15 @@ where
         }
     }
 
-    /// Configures VF2++ to use `node_eq` as the node equality function.
+    /// Configures VF2 to use `node_eq` as the node equality function.
     pub fn node_eq<NewNodeEq>(
         self,
         node_eq: NewNodeEq,
-    ) -> Vf2ppBuilder<'a, Query, Data, NewNodeEq, EdgeEq>
+    ) -> Vf2Builder<'a, Query, Data, NewNodeEq, EdgeEq>
     where
         NewNodeEq: Fn(&Query::NodeLabel, &Data::NodeLabel) -> bool,
     {
-        Vf2ppBuilder {
+        Vf2Builder {
             problem: self.problem,
             query: self.query,
             data: self.data,
@@ -149,15 +149,15 @@ where
         }
     }
 
-    /// Configures VF2++ to use `edge_eq` as the edge equality function.
+    /// Configures VF2 to use `edge_eq` as the edge equality function.
     pub fn edge_eq<NewEdgeEq>(
         self,
         edge_eq: NewEdgeEq,
-    ) -> Vf2ppBuilder<'a, Query, Data, NodeEq, NewEdgeEq>
+    ) -> Vf2Builder<'a, Query, Data, NodeEq, NewEdgeEq>
     where
         NewEdgeEq: Fn(&Query::EdgeLabel, &Data::EdgeLabel) -> bool,
     {
-        Vf2ppBuilder {
+        Vf2Builder {
             problem: self.problem,
             query: self.query,
             data: self.data,

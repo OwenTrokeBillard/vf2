@@ -24,13 +24,13 @@ pub trait Graph {
 
     /// Returns `true` if there is an edge from `source` to `target`.
     ///
-    /// If the graph is directed, the edge must must go from `source` to `target`.
+    /// If the graph is directed, the edge must go from `source` to `target`.
     /// If undirected, an edge must exist between `source` and `target`.
     fn contains_edge(&self, source: NodeIndex, target: NodeIndex) -> bool;
 
     /// Returns a reference to the label of the edge from `source` to `target`.
     ///
-    /// If the graph is directed, the edge must must go from `source` to `target`.
+    /// If the graph is directed, the edge must go from `source` to `target`.
     /// If undirected, the edge must be between `source` and `target`.
     fn edge_label(&self, source: NodeIndex, target: NodeIndex) -> Option<&Self::EdgeLabel>;
 }

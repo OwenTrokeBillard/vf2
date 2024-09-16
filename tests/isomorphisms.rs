@@ -261,9 +261,9 @@ fn isomorphisms_same_size() {
     vf2::isomorphisms(&query, &data).vec();
 }
 
-/// Tests that [`Debug`] is implemented for [`Vf2ppBuilder`].
+/// Tests that [`Debug`] is implemented for [`Vf2Builder`].
 ///
-/// [`Vf2ppBuilder`]: vf2::Vf2ppBuilder
+/// [`Vf2Builder`]: vf2::Vf2Builder
 #[test]
 fn builder_debug() {
     let (query, data) = small_graphs::<Directed>();
