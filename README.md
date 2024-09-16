@@ -1,4 +1,13 @@
-# `vf2` — VF2 subgraph isomorphism algorithm in Rust
+<div align="center">
+
+<img src="images/icon.svg" width="128" alt="icon"/>
+
+# `vf2`
+
+### VF2 subgraph isomorphism algorithm in Rust
+
+<br/>
+</div>
 
 This crate implements the VF2 subgraph isomorphism algorithm [1].
 It can find
