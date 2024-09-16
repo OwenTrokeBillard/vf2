@@ -39,10 +39,10 @@ the following image.
 
 ![subgraph-isomorphism.svg](/images/subgraph-isomorphism.svg)
 
+### Induced subgraph isomorphism
+
 An induced subgraph isomorphism is the same as a subgraph isomorphism except that the subgraph must be induced, meaning
 the query and data graphs must have the same edges.
-
-### Induced subgraph isomorphism
 
 ![induced-subgraph-isomorphism.svg](/images/induced-subgraph-isomorphism.svg)
 
