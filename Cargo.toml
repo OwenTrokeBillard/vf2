@@ -1,7 +1,11 @@
 [package]
 name = "vf2"
-version = "0.1.0"
+authors = ["Owen Troke-Billard"]
+version = "1.0.0"
 edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "VF2 subgraph isomorphism algorithm in Rust."
+repository = "https://github.com/OwenTrokeBillard/vf2"
 
 [features]
 default = ["petgraph"]
