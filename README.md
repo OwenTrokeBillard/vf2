@@ -46,6 +46,69 @@ the data subgraph must also exist in the query graph.
 
 ![induced-subgraph-isomorphism.svg](/images/induced-subgraph-isomorphism.svg)
 
+# Usage
+
+Create your query and data graphs with [petgraph](https://github.com/petgraph/petgraph)
+or any library that implements the `Graph` trait. Then, call one of the following
+functions based on the problem type.
+
+| Problem type                  | Call                            |
+|-------------------------------|---------------------------------|
+| Graph isomorphisms            | `isomorphisms`                  |
+| Subgraph isomorphisms         | `subgraph_isomorphisms`         |
+| Induced subgraph isomorphisms | `induced_subgraph_isomorphisms` |
+
+These return a `Vf2Builder` with the algorithm configured.
+Next, call one of the following on the builder to enumerate the isomorphisms.
+
+| Desired output           | Call    |
+|--------------------------|---------|
+| First isomorphism        | `first` |
+| Vector of isomorphisms   | `vec`   |
+| Iterator of isomorphisms | `iter`  |
+
+Filling a vector can consume a significant amount of memory.
+Use the iterator to inspect isomorphisms as they are found.
+For the best performance, call `next_ref`
+on the iterator
+instead of `next`
+to avoid cloning each isomorphism.
+
+You can configure the node and edge equality functions on the builder
+with `node_eq` and `edge_eq`,
+respectively.
+
+# Example
+
+This example shows how to find subgraph isomorphisms.
+
+```rust
+use petgraph::data::{Element, FromElements};
+use petgraph::graph::DiGraph;
+
+fn main() {
+    // Create query graph.
+    let query = DiGraph::<i32, ()>::from_elements([
+        Element::Node { weight: 0 },
+        Element::Node { weight: 1 },
+        Element::Edge { source: 0, target: 1, weight: () },
+    ]);
+
+    // Create data graph.
+    let data = DiGraph::<i32, ()>::from_elements([
+        Element::Node { weight: 0 },
+        Element::Node { weight: 1 },
+        Element::Node { weight: 2 },
+        Element::Edge { source: 0, target: 1, weight: () },
+        Element::Edge { source: 1, target: 2, weight: () },
+    ]);
+
+    // Find subgraph isomorphisms.
+    let isomorphisms = vf2::subgraph_isomorphisms(&query, &data).vec();
+    assert_eq!(isomorphisms, vec![vec![0, 1], vec![1, 2]]);
+}
+```
+
 # Remaining work
 
 - [ ] Implement VF2 cutting rules

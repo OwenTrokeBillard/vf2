@@ -7,24 +7,34 @@
 //!
 //! See the [repository](https://github.com/OwenTrokeBillard/vf2) for more information.
 //!
-//! # Instructions
+//! # Usage
 //!
 //! Create your query and data graphs with [petgraph](https://github.com/petgraph/petgraph)
 //! or any library that implements the [`Graph`] trait. Then, call one of the following
-//! functions based on the problem type:
-//! - Graph isomorphisms: [`isomorphisms`].
-//! - Subgraph isomorphisms: [`subgraph_isomorphisms`].
-//! - Induced subgraph isomorphisms: [`induced_subgraph_isomorphisms`].
+//! functions based on the problem type.
 //!
+//! | Problem type                  | Call                              |
+//! |-------------------------------|-----------------------------------|
+//! | Graph isomorphisms            | [`isomorphisms`]                  |
+//! | Subgraph isomorphisms         | [`subgraph_isomorphisms`]         |
+//! | Induced subgraph isomorphisms | [`induced_subgraph_isomorphisms`] |
+//!
+//! \
 //! These return a [`Vf2Builder`] with the algorithm configured.
-//! Next, call one of the following to enumerate the isomorphisms:
-//! - First isomorphism: [`first`](Vf2Builder::first).
-//! - Vector of isomorphisms: [`vec`](Vf2Builder::vec).
-//! - Iterator of isomorphisms: [`iter`](Vf2Builder::iter).
+//! Next, call one of the following on the builder to enumerate the isomorphisms.
 //!
+//! | Desired output           | Call                         |
+//! |--------------------------|------------------------------|
+//! | First isomorphism        | [`first`](Vf2Builder::first) |
+//! | Vector of isomorphisms   | [`vec`](Vf2Builder::vec)     |
+//! | Iterator of isomorphisms | [`iter`](Vf2Builder::iter)   |
+//!
+//! \
 //! Filling a vector can consume a significant amount of memory.
 //! Use the iterator to inspect isomorphisms as they are found.
-//! For even better performance, call [`next_ref`](IsomorphismIter::next_ref)
+//! For the best performance, call [`next_ref`](IsomorphismIter::next_ref)
+//! on the iterator
+//! instead of [`next`](IsomorphismIter::next)
 //! to avoid cloning each isomorphism.
 //!
 //! You can configure the node and edge equality functions on the builder
