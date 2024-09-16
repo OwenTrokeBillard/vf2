@@ -5,6 +5,7 @@ It can find
 [graph isomorphisms](https://en.wikipedia.org/wiki/Graph_isomorphism),
 [subgraph isomorphisms](https://en.wikipedia.org/wiki/Subgraph_isomorphism_problem),
 and [induced subgraph isomorphisms](https://en.wikipedia.org/wiki/Induced_subgraph_isomorphism_problem).
+Graphs can be directed or undirected.
 
 # Features
 
