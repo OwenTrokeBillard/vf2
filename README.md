@@ -19,9 +19,37 @@ Graphs can be directed or undirected.
 - [x] Support edge labels
 - [x] Graph trait
 
+# What is subgraph isomorphism?
+
+A graph is a structure consisting of a set of objects where some pairs of objects are connected. A graph isomorphism is
+a one-to-one correspondence between two graphs such that objects connected in one are also connected in the other.
+
+### Graph isomorphism
+
+For two graphs to be isomorphic, there must be a one-to-one correspondence between nodes such that neighbors in one are
+also neighbors in the other. The query and data graphs in the following image are isomorphic.
+
+![graph-isomorphism.svg](/images/graph-isomorphism.svg)
+
+### Subgraph isomorphism
+
+It is often desirable to find instances of one graph within another. To do this, we search for subgraph isomorphisms. A
+subgraph isomorphism is when one graph is isomorphic to a subgraph of another. There are two subgraph isomorphisms in
+the following image.
+
+![subgraph-isomorphism.svg](/images/subgraph-isomorphism.svg)
+
+An induced subgraph isomorphism is the same as a subgraph isomorphism except that the subgraph must be induced, meaning
+the query and data graphs must have the same edges.
+
+### Induced subgraph isomorphism
+
+![induced-subgraph-isomorphism.svg](/images/induced-subgraph-isomorphism.svg)
+
 # Remaining work
 
 - [ ] Implement VF2 cutting rules
+- [ ] Implement VF2++ (only VF2 implemented so far)
 
 # References
 
