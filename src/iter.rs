@@ -3,6 +3,9 @@ use crate::{Graph, Isomorphism};
 use std::fmt::Debug;
 
 /// An isomorphism iterator.
+///
+/// This traverses the state space representation and yields
+/// isomorphisms as they are found.
 #[derive(Clone, Debug)]
 pub struct IsomorphismIter<'a, Query, Data, NodeEq, EdgeEq> {
     state: State<'a, Query, Data, NodeEq, EdgeEq>,

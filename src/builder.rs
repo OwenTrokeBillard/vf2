@@ -64,7 +64,7 @@ where
     DefaultVf2Builder::new(Problem::InducedSubgraphIsomorphism, query, data)
 }
 
-/// A VF2 builder.
+/// A VF2 builder used to configure the algorithm.
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
 pub struct Vf2Builder<'a, Query, Data, NodeEq, EdgeEq> {
     /// Problem type.

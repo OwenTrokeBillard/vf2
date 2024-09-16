@@ -38,7 +38,7 @@ pub trait Graph {
 /// A node index.
 pub type NodeIndex = usize;
 
-/// Edge direction.
+/// Edge direction, either outgoing or incoming.
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
 pub enum Direction {
     Outgoing,
