@@ -36,7 +36,7 @@ Graphs can be directed or undirected.
 
 Subgraph matching is the task of finding instances of a query graph within a larger data graph. It is useful when
 searching for patterns in a graph structure, such as relationships within a social network. It is a fundamental
-problem with applications in pattern recognition, databases, security, and biochemistry.
+problem in graph theory with applications in pattern recognition, databases, security, and biochemistry.
 
 # What is subgraph isomorphism?
 
