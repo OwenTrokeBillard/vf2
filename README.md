@@ -32,6 +32,12 @@ Graphs can be directed or undirected.
 - [x] Support edge labels
 - [x] Graph trait
 
+# Motivation
+
+Subgraph matching is the task of finding instances of a query graph within a larger data graph. It is useful when
+searching for patterns in a graph structure, such as relationships within a social network. It is a fundamental
+problem with applications in pattern recognition, databases, security, and biochemistry.
+
 # What is subgraph isomorphism?
 
 A graph is a structure consisting of a set of objects where some pairs of objects are connected. A graph isomorphism is
