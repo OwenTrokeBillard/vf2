@@ -61,15 +61,22 @@ the data subgraph must also exist in the query graph.
 
 # Usage
 
+Add `vf2` to your dependencies in **Cargo.toml**.
+
+```toml
+[dependencies]
+vf2 = "1.0"
+```
+
 Create your query and data graphs with [petgraph](https://github.com/petgraph/petgraph)
 or any library that implements the `Graph` trait. Then, call one of the following
 functions based on the problem type.
 
-| Problem type                  | Call                            |
-|-------------------------------|---------------------------------|
-| Graph isomorphisms            | `isomorphisms`                  |
-| Subgraph isomorphisms         | `subgraph_isomorphisms`         |
-| Induced subgraph isomorphisms | `induced_subgraph_isomorphisms` |
+| Problem type                  | Call                                 |
+|-------------------------------|--------------------------------------|
+| Graph isomorphisms            | `vf2::isomorphisms`                  |
+| Subgraph isomorphisms         | `vf2::subgraph_isomorphisms`         |
+| Induced subgraph isomorphisms | `vf2::induced_subgraph_isomorphisms` |
 
 These return a `Vf2Builder` with the algorithm configured.
 Next, call one of the following on the builder to enumerate the isomorphisms.
