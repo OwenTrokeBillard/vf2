@@ -1,7 +1,7 @@
 [package]
 name = "vf2"
 authors = ["Owen Troke-Billard"]
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 description = "VF2 subgraph isomorphism algorithm in Rust."
