@@ -6,6 +6,10 @@
 
 ### VF2 subgraph isomorphism algorithm in Rust
 
+[![crates.io](https://img.shields.io/crates/v/vf2.svg)](https://crates.io/crates/vf2)
+[![docs.rs](https://img.shields.io/docsrs/vf2)](https://docs.rs/vf2/latest/vf2)
+[![](https://github.com/OwenTrokeBillard/vf2/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/OwenTrokeBillard/vf2/actions)
+
 <br/>
 </div>
 
