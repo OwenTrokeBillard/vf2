@@ -124,6 +124,8 @@ fn main() {
 
 # Remaining work
 
+The crate is feature complete. The following will improve performance.
+
 - [ ] Implement VF2 cutting rules
 - [ ] Implement VF2++ (only VF2 implemented so far)
 
