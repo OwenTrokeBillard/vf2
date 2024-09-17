@@ -38,7 +38,7 @@ Subgraph matching is the task of finding instances of a query graph within a lar
 searching for patterns in a graph structure, such as relationships within a social network. It is a fundamental
 problem in graph theory with applications in pattern recognition, databases, security, and biochemistry.
 
-# What is subgraph isomorphism?
+# What is a subgraph isomorphism?
 
 A graph is a structure consisting of a set of objects where some pairs of objects are connected. A graph isomorphism is
 a one-to-one correspondence between two graphs such that objects connected in one are also connected in the other.
