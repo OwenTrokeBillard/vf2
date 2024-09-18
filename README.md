@@ -20,6 +20,18 @@ It can find
 and [induced subgraph isomorphisms](https://en.wikipedia.org/wiki/Induced_subgraph_isomorphism_problem).
 Graphs can be directed or undirected.
 
+# Features
+
+- [x] Enumerate graph isomorphisms
+- [x] Enumerate subgraph isomorphisms
+- [x] Enumerate induced subgraph isomorphisms
+- [x] Support directed graphs
+- [x] Support undirected graphs
+- [x] Support disconnected graphs
+- [x] Support node labels
+- [x] Support edge labels
+- [x] Graph trait
+
 # Motivation
 
 Subgraph matching is the task of finding instances of a query graph within a larger data graph. It is useful when
@@ -57,18 +69,6 @@ An induced subgraph isomorphism is the same as a subgraph isomorphism except tha
 the data subgraph must also exist in the query graph.
 
 ![induced-subgraph-isomorphism.svg](/images/induced-subgraph-isomorphism.svg)
-
-# Features
-
-- [x] Enumerate graph isomorphisms
-- [x] Enumerate subgraph isomorphisms
-- [x] Enumerate induced subgraph isomorphisms
-- [x] Support directed graphs
-- [x] Support undirected graphs
-- [x] Support disconnected graphs
-- [x] Support node labels
-- [x] Support edge labels
-- [x] Graph trait
 
 # Usage
 
